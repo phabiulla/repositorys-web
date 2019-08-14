@@ -109,3 +109,60 @@ export const IssueList = styled.ul`
     }
   }
 `;
+
+export const IssueSelect = styled.select`
+  width: 100%;
+  margin-top: 30px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: #666;
+  font-size: 16px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px;
+
+  option {
+    color: #000;
+  }
+`;
+
+export const ButtonPrevious = styled.button.attrs(props => ({
+  disabled: props.disabled,
+}))`
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  background: #7159c1;
+  padding: 10px;
+  margin-top: 20px;
+
+  &:disabled {
+    background: #eee;
+    color: #666;
+    cursor: unset;
+    border: 1px solid #666;
+  }
+`;
+
+export const ButtonNext = styled.button.attrs(props => ({
+  disabled: props.disabled,
+}))`
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  background: #7159c1;
+  padding: 10px;
+  float: right;
+  margin-top: 20px;
+
+  &:disabled {
+    background: #eee;
+    color: #666;
+    cursor: unset;
+    border: 1px solid #666;
+  }
+`;

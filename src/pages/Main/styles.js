@@ -1,16 +1,24 @@
 import styled, { keyframes, css } from 'styled-components';
 
-export const Form = styled.form`
+export const Form = styled.form.attrs(props => ({}))`
   margin-top: 30px;
   display: flex;
   flex-direction: row;
 
   input {
     flex: 1;
-    border: 1px solid #eee;
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
+
+    ${props =>
+      props.error
+        ? css`
+            border: 1px solid #f00;
+          `
+        : css`
+            border: 1px solid #eee;
+          `}
   }
 `;
 
@@ -48,6 +56,14 @@ export const SubmitButton = styled.button.attrs(props => ({
         animation: ${rotate} 2s linear infinite;
       }
     `}
+`;
+
+export const ErrorMessage = styled.p`
+  flex: 1;
+  padding: 5px;
+  font-size: 12px;
+  min-height: 25px;
+  color: #f00;
 `;
 
 export const List = styled.ul`
