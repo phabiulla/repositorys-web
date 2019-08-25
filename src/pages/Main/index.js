@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import api from '../../services/api';
 import Container from '../../components/Container/index';
-import { Form, SubmitButton, List, ErrorMessage } from './styles';
+import { Form, SubmitButton, List, ErrorMessage, LinkButton } from './styles';
 
 export default class Main extends Component {
   state = {
@@ -59,6 +58,7 @@ export default class Main extends Component {
           avatar_url: response.data.owner.avatar_url,
           login: response.data.owner.login,
         },
+        forks: response.data.forks,
       };
 
       this.setState({
@@ -112,9 +112,11 @@ export default class Main extends Component {
               />
               <div>
                 <span>{repository.name}</span>
-                <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
-                  Detalhes
-                </Link>
+                <LinkButton
+                  to={`/repository/${encodeURIComponent(repository.name)}`}
+                >
+                  Ver Detalhes
+                </LinkButton>
               </div>
             </li>
           ))}

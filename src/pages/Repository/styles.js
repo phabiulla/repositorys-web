@@ -110,22 +110,34 @@ export const IssueList = styled.ul`
   }
 `;
 
-export const IssueSelect = styled.select`
-  width: 100%;
-  margin-top: 30px;
+export const ButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  align-self: auto;
+  margin-left: 110px;
+`;
+
+export const ButtonFilter = styled.button`
   border: 1px solid #eee;
   border-radius: 4px;
-  color: #666;
+  min-width: 100px;
+  color: #fff;
   font-size: 16px;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   padding: 10px;
+  margin: 20px;
 
-  option {
-    color: #000;
-  }
+  ${props =>
+    props.enabled
+      ? css`
+          background: #7159c1;
+        `
+      : css`
+          background: #eee;
+          border: 1px solid #ccc;
+          color: #ccc;
+        `}
 `;
 
 export const ButtonPrevious = styled.button.attrs(props => ({

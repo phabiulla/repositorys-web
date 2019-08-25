@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Form = styled.form.attrs(props => ({}))`
   margin-top: 30px;
@@ -66,6 +67,18 @@ export const ErrorMessage = styled.p`
   color: #f00;
 `;
 
+export const LinkButton = styled(Link)`
+  border: 1px solid #7159c1;
+  color: #7159c1;
+  padding: 10px;
+  border-radius: 4px;
+
+  :hover {
+    background: #7159c1;
+    color: #fff;
+  }
+`;
+
 export const List = styled.ul`
   list-style: none;
   margin-top: 30px;
@@ -74,11 +87,19 @@ export const List = styled.ul`
     padding: 15px 0;
     display: flex;
     flex-direction: row;
+    align-content: center;
     justify-content: space-between;
     align-items: center;
 
     & + li {
       border-top: 1px solid #eee;
+    }
+
+    span {
+      font-size: 16px;
+      line-height: 48px;
+      color: #2b2b2b;
+      text-transform: capitalize;
     }
 
     a {
@@ -95,6 +116,7 @@ export const List = styled.ul`
     }
 
     div {
+      flex-direction: row;
       flex: 1;
       margin-left: 15px;
     }

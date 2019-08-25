@@ -7,9 +7,10 @@ import {
   Loading,
   Owner,
   IssueList,
-  IssueSelect,
   ButtonPrevious,
   ButtonNext,
+  ButtonFilter,
+  ButtonRow,
 } from './styles';
 import Container from '../../components/Container/index';
 
@@ -93,11 +94,11 @@ export default class Repository extends Component {
   }
 
   handleSelectChange = e => {
-    this.setState({ state: e.target.value, page: 1 });
+    this.setState({ state: e, page: 1 });
   };
 
   render() {
-    const { repository, issues, loading, page } = this.state;
+    const { repository, issues, loading, page, state } = this.state;
 
     if (loading) return <Loading>Carregando..</Loading>;
 
@@ -112,11 +113,29 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-        <IssueSelect onChange={this.handleSelectChange}>
-          <option value="all">Todas</option>
-          <option value="open">Abertas</option>
-          <option value="closed">Fechadas</option>
-        </IssueSelect>
+
+        <ButtonRow>
+          <ButtonFilter
+            onClick={() => this.handleSelectChange('all')}
+            enabled={state === 'all'}
+          >
+            Todas
+          </ButtonFilter>
+
+          <ButtonFilter
+            onClick={() => this.handleSelectChange('open')}
+            enabled={state === 'open'}
+          >
+            Abertas
+          </ButtonFilter>
+
+          <ButtonFilter
+            onClick={() => this.handleSelectChange('closed')}
+            enabled={state === 'closed'}
+          >
+            Fechadas
+          </ButtonFilter>
+        </ButtonRow>
         <IssueList>
           {issues.map(issue => (
             <li key={String(issue.id)}>
